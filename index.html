@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APEX GYM — Forge Your Greatness</title>
+  <meta name="description" content="APEX GYM offers world-class fitness equipment, expert personal trainers, and premium wellness programs. Join thousands of members transforming their lives." />
+  <meta name="keywords" content="gym, fitness, personal training, weightlifting, APEX GYM" />
+  <link rel="canonical" href="index.html" />
+  <link rel="stylesheet" href="./style.css" />
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
+  <style>
+    /* ── Home-specific styles ── */
+    .highlights-section { background: var(--bg-secondary); }
+
+    .stats-section {
+      background: var(--bg-primary);
+      padding: 5rem 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .stat-block {
+      background: var(--bg-card);
+      padding: 2.5rem;
+      text-align: center;
+      transition: background var(--transition-fast);
+    }
+    .stat-block:hover { background: var(--bg-card-hover); }
+
+    .stat-block .counter-number { margin-bottom: 0.3rem; }
+    .stat-block p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Accordion for FAQs */
+    .accordion-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+    }
+
+    .accordion-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      background: none;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      transition: color var(--transition-fast);
+      text-align: left;
+      gap: 1rem;
+    }
+
+    .accordion-trigger:hover { color: var(--accent); }
+
+    .accordion-icon {
+      font-size: 0.7rem;
+      color: var(--accent);
+      transition: transform var(--transition-med);
+      flex-shrink: 0;
+    }
+
+    .accordion-item.open .accordion-icon { transform: rotate(180deg); }
+
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .accordion-body-inner {
+      padding: 0 1.5rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════ -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+
+      <!-- Logo -->
+      <a href="index.html" class="nav-logo" aria-label="APEX GYM Home">
+        <div class="nav-logo-icon" aria-hidden="true">A</div>
+        APEX<span>GYM</span>
+      </a>
+
+      <!-- Desktop Links -->
+      <ul class="nav-links" role="list">
+        <li><a href="index.html" id="nav-home">Home</a></li>
+        <li><a href="about.html" id="nav-about">About</a></li>
+        <li><a href="services.html" id="nav-services">Services</a></li>
+        <li><a href="contact.html" id="nav-contact">Contact</a></li>
+      </ul>
+
+      <!-- Controls -->
+      <div class="nav-controls">
+        <!-- Theme Toggle -->
+        <button
+          class="theme-toggle"
+          data-theme-toggle
+          aria-label="Toggle dark/light mode"
+          id="theme-toggle-btn"
+        >
+          <span class="theme-toggle-icon icon-sun" aria-hidden="true">☀️</span>
+          <span class="theme-toggle-thumb" aria-hidden="true"></span>
+          <span class="theme-toggle-icon icon-moon" aria-hidden="true">🌙</span>
+        </button>
+
+        <!-- CTA Button -->
+        <a href="contact.html" class="btn btn-primary nav-cta" id="nav-join-btn">
+          Join Now <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </a>
+
+        <!-- Hamburger -->
+        <button
+          class="nav-hamburger"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          id="hamburger-btn"
+        >
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <ul class="mobile-menu-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;" id="mobile-join-btn">
+      Join Now <i class="fa fa-arrow-right" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <main>
+
+    <!-- ══════════════════════════════════
+         HERO SECTION
+    ══════════════════════════════════ -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-bg" aria-hidden="true">
+        <img
+          src="images/gym_hero.png"
+          alt="Interior of APEX GYM with premium equipment"
+          loading="eager"
+        />
+      </div>
+
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge fade-in">
+            <span class="hero-badge-dot" aria-hidden="true"></span>
+            Now Open — 24/7 Access Available
+          </div>
+
+          <h1 class="hero-title fade-in" id="hero-heading">
+            Forge Your
+            <span class="accent-text">Greatness.</span>
+          </h1>
+
+          <p class="hero-subtitle fade-in">
+            APEX GYM redefines what a fitness experience should feel like.
+            World-class equipment, elite coaching, and a community that pushes
+            you beyond your limits — every single day.
+          </p>
+
+          <div class="hero-cta fade-in">
+            <a href="contact.html" class="btn btn-primary" id="hero-start-btn">
+              Start Today <i class="fa fa-bolt" aria-hidden="true"></i>
+            </a>
+            <a href="services.html" class="btn btn-secondary" id="hero-explore-btn">
+              Explore Programs
+            </a>
+          </div>
+
+          <div class="hero-stats fade-in" role="list">
+            <div role="listitem">
+              <div class="hero-stat-value">5,000+</div>
+              <div class="hero-stat-label">Active Members</div>
+            </div>
+            <div role="listitem">
+              <div class="hero-stat-value">30+</div>
+              <div class="hero-stat-label">Expert Coaches</div>
+            </div>
+            <div role="listitem">
+              <div class="hero-stat-value">15yr</div>
+              <div class="hero-stat-label">Industry Experience</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="hero-scroll" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="hero-scroll-arrow"></div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         HIGHLIGHTS / FEATURES
+    ══════════════════════════════════ -->
+    <section class="section highlights-section" aria-labelledby="highlights-heading">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">Why APEX?</span>
+          <h2 class="section-title" id="highlights-heading">
+            Everything You Need to <br/><span class="text-accent">Dominate</span>
+          </h2>
+          <p class="section-subtitle">
+            From cutting-edge equipment to tailored nutrition guidance, APEX is
+            built for those who demand more from their fitness journey.
+          </p>
+        </div>
+
+        <div class="features-grid stagger-children">
+          <article class="feature-card slide-up" id="feature-equipment">
+            <div class="feature-icon" aria-hidden="true">🏋️</div>
+            <h3>Elite Equipment</h3>
+            <p>Over 400 pieces of premium, regularly-maintained strength and cardio equipment from industry-leading brands.</p>
+          </article>
+
+          <article class="feature-card slide-up" id="feature-coaching">
+            <div class="feature-icon" aria-hidden="true">🎯</div>
+            <h3>Expert Coaching</h3>
+            <p>Certified personal trainers with decades of experience designing programs that actually deliver results.</p>
+          </article>
+
+          <article class="feature-card slide-up" id="feature-nutrition">
+            <div class="feature-icon" aria-hidden="true">🥗</div>
+            <h3>Nutrition Support</h3>
+            <p>Personalized meal planning and on-site nutrition consultations aligned with your performance goals.</p>
+          </article>
+
+          <article class="feature-card slide-up" id="feature-recovery">
+            <div class="feature-icon" aria-hidden="true">💆</div>
+            <h3>Recovery Zone</h3>
+            <p>Ice baths, saunas, massage chairs, and stretching studios to keep your body primed for every session.</p>
+          </article>
+
+          <article class="feature-card slide-up" id="feature-community">
+            <div class="feature-icon" aria-hidden="true">🤝</div>
+            <h3>Strong Community</h3>
+            <p>Join group classes, challenges, and events that keep you accountable and connected to a winning tribe.</p>
+          </article>
+
+          <article class="feature-card slide-up" id="feature-access">
+            <div class="feature-icon" aria-hidden="true">🔑</div>
+            <h3>24/7 Access</h3>
+            <p>Train on your schedule with round-the-clock access via keycard — because greatness doesn't clock out.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         STATS COUNTER
+    ══════════════════════════════════ -->
+    <section class="stats-section" aria-labelledby="stats-heading">
+      <div class="container">
+        <h2 class="visually-hidden" id="stats-heading">APEX GYM by the numbers</h2>
+        <div class="stats-grid stagger-children">
+          <div class="stat-block fade-in">
+            <div class="counter-number" data-count="5000" data-suffix="+">0</div>
+            <p>Happy Members</p>
+          </div>
+          <div class="stat-block fade-in">
+            <div class="counter-number" data-count="32" data-suffix="">0</div>
+            <p>Expert Trainers</p>
+          </div>
+          <div class="stat-block fade-in">
+            <div class="counter-number" data-count="98" data-suffix="%">0</div>
+            <p>Member Satisfaction</p>
+          </div>
+          <div class="stat-block fade-in">
+            <div class="counter-number" data-count="15" data-suffix="yr">0</div>
+            <p>Years of Excellence</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         PHOTO GALLERY
+    ══════════════════════════════════ -->
+    <section class="section gallery-section" aria-labelledby="gallery-heading" style="background: var(--bg-secondary); padding-top:5rem; padding-bottom:5rem;">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">Inside APEX</span>
+          <h2 class="section-title" id="gallery-heading">Experience the <span class="text-accent">Difference</span></h2>
+          <p class="section-subtitle">World-class facilities designed for peak performance and total recovery.</p>
+        </div>
+        <div class="gallery-grid stagger-children" style="display:grid;grid-template-columns:repeat(12,1fr);gap:1rem;">
+          <figure class="slide-up gallery-item" style="grid-column:1/8;grid-row:1/3;border-radius:var(--radius-md);overflow:hidden;margin:0;position:relative;min-height:320px;">
+            <img src="images/gym_weights_1.jpg" alt="Elite weights floor with dramatic blue lighting" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
+            <figcaption style="position:absolute;bottom:0;left:0;right:0;padding:1.25rem 1.5rem;background:linear-gradient(to top,rgba(8,13,22,0.85),transparent);color:#EDF2FF;font-family:var(--font-heading);font-weight:700;font-size:0.95rem;">⚡ Elite Weight Floor</figcaption>
+          </figure>
+          <figure class="slide-up gallery-item" style="grid-column:8/13;border-radius:var(--radius-md);overflow:hidden;margin:0;position:relative;min-height:155px;">
+            <img src="images/gym_cardio_1.jpg" alt="Modern cardio zone with city skyline view" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
+            <figcaption style="position:absolute;bottom:0;left:0;right:0;padding:1rem 1.25rem;background:linear-gradient(to top,rgba(8,13,22,0.85),transparent);color:#EDF2FF;font-family:var(--font-heading);font-weight:700;font-size:0.9rem;">🏃 Cardio Zone</figcaption>
+          </figure>
+          <figure class="slide-up gallery-item" style="grid-column:8/13;border-radius:var(--radius-md);overflow:hidden;margin:0;position:relative;min-height:155px;">
+            <img src="images/gym_classes_1.jpg" alt="Energetic group fitness class in blue-lit studio" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
+            <figcaption style="position:absolute;bottom:0;left:0;right:0;padding:1rem 1.25rem;background:linear-gradient(to top,rgba(8,13,22,0.85),transparent);color:#EDF2FF;font-family:var(--font-heading);font-weight:700;font-size:0.9rem;">🧘 Group Classes</figcaption>
+          </figure>
+          <figure class="slide-up gallery-item" style="grid-column:1/7;border-radius:var(--radius-md);overflow:hidden;margin:0;position:relative;min-height:220px;">
+            <img src="images/gym_trainer_1.jpg" alt="Personal trainer coaching a client" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
+            <figcaption style="position:absolute;bottom:0;left:0;right:0;padding:1rem 1.25rem;background:linear-gradient(to top,rgba(8,13,22,0.85),transparent);color:#EDF2FF;font-family:var(--font-heading);font-weight:700;font-size:0.9rem;">🎯 Expert Coaching</figcaption>
+          </figure>
+          <figure class="slide-up gallery-item" style="grid-column:7/13;border-radius:var(--radius-md);overflow:hidden;margin:0;position:relative;min-height:220px;">
+            <img src="images/gym_pool_spa_1.jpg" alt="Luxury recovery pool and sauna" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;">
+            <figcaption style="position:absolute;bottom:0;left:0;right:0;padding:1rem 1.25rem;background:linear-gradient(to top,rgba(8,13,22,0.85),transparent);color:#EDF2FF;font-family:var(--font-heading);font-weight:700;font-size:0.9rem;">💆 Recovery &amp; Spa</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         TESTIMONIALS
+    ══════════════════════════════════ -->
+    <section class="section" aria-labelledby="testimonials-heading" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">Testimonials</span>
+          <h2 class="section-title" id="testimonials-heading">
+            Real Results, <span class="text-accent">Real People</span>
+          </h2>
+          <p class="section-subtitle">
+            Don't take our word for it — hear from the APEX community.
+          </p>
+        </div>
+
+        <div class="testimonials-grid stagger-children">
+          <article class="testimonial-card slide-up" id="testimonial-1">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="testimonial-text">
+              "APEX completely transformed my life. Lost 40lbs in 5 months and
+              gained the confidence I never thought possible. The coaches here
+              are absolutely world-class."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">MK</div>
+              <div>
+                <div class="testimonial-name">Marcus Klein</div>
+                <div class="testimonial-role">Member since 2022</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card slide-up" id="testimonial-2">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="testimonial-text">
+              "The 24/7 access is a game-changer for my schedule. The equipment
+              is always clean, never crowded during off-hours, and the recovery
+              zone is phenomenal."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">SR</div>
+              <div>
+                <div class="testimonial-name">Sophia Reyes</div>
+                <div class="testimonial-role">Member since 2023</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card slide-up" id="testimonial-3">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="testimonial-text">
+              "As a competitive athlete, I need the best. APEX delivers on every
+              level. The training programs are science-backed, and the community
+              keeps me fired up every day."
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">DT</div>
+              <div>
+                <div class="testimonial-name">Derek Thompson</div>
+                <div class="testimonial-role">Member since 2021</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         CTA SECTION
+    ══════════════════════════════════ -->
+    <section class="cta-section" aria-labelledby="cta-heading">
+      <div class="container">
+        <div class="cta-inner fade-in">
+          <h2 id="cta-heading">Ready to Become Your Best Self?</h2>
+          <p>Your first week is completely free. No commitments, no gimmicks — just results.</p>
+          <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+            <a href="contact.html" class="btn btn-dark" id="cta-free-trial-btn">
+              Claim Free Trial <i class="fa fa-star" aria-hidden="true"></i>
+            </a>
+            <a href="services.html" class="btn" style="background:rgba(8,13,22,0.55);color:#EDF2FF;border:2px solid rgba(96,165,250,0.35);font-family:var(--font-heading);font-weight:700;" id="cta-plans-btn">
+              View Plans
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════
+       FOOTER
+  ══════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="footer-logo-icon" aria-hidden="true">A</div>
+            APEX<span>GYM</span>
+          </div>
+          <p>Empowering people to unlock their physical and mental potential since 2009. Your journey to greatness starts here.</p>
+          <div class="footer-social" aria-label="Social media links">
+            <a href="#" aria-label="Instagram" id="footer-instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook" id="footer-facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="YouTube" id="footer-youtube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="TikTok" id="footer-tiktok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Navigation</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Programs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Programs</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="services.html">Strength Training</a></li>
+            <li><a href="services.html">HIIT Cardio</a></li>
+            <li><a href="services.html">Personal Training</a></li>
+            <li><a href="services.html">Group Classes</a></li>
+            <li><a href="services.html">Nutrition Plans</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Hours</h3>
+          <ul class="footer-links" role="list" style="color:rgba(255,255,255,0.4);font-size:0.88rem;">
+            <li style="display:flex;justify-content:space-between;"><span>Mon – Fri</span><span style="color:var(--accent)">5am – 11pm</span></li>
+            <li style="display:flex;justify-content:space-between;margin-top:0.4rem;"><span>Saturday</span><span style="color:var(--accent)">6am – 10pm</span></li>
+            <li style="display:flex;justify-content:space-between;margin-top:0.4rem;"><span>Sunday</span><span style="color:var(--accent)">7am – 9pm</span></li>
+            <li style="margin-top:0.75rem;color:rgba(245,158,11,0.7);font-size:0.8rem;">🔑 Members: 24/7 Keycard</li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="footer-divider" />
+
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          &copy; 2024 <span>APEX GYM</span>. All rights reserved. Built with 💪 for peak performance.
+        </p>
+        <div style="display:flex;gap:1.5rem;">
+          <a href="#" style="font-size:0.78rem;color:rgba(255,255,255,0.3);transition:color 0.2s;" id="footer-privacy">Privacy Policy</a>
+          <a href="#" style="font-size:0.78rem;color:rgba(255,255,255,0.3);transition:color 0.2s;" id="footer-terms">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>

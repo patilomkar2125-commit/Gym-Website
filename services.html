@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programs &amp; Services — APEX GYM</title>
+  <meta name="description" content="Explore APEX GYM's premium fitness programs: strength training, HIIT, personal coaching, yoga, nutrition counseling, and flexible membership plans." />
+  <link rel="canonical" href="services.html" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
+  <style>
+    /* ── Services-specific styles ── */
+    .accordion-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+      transition: border-color var(--transition-fast);
+    }
+
+    .accordion-item.open {
+      border-color: rgba(245,158,11,0.3);
+    }
+
+    .accordion-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      background: none;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      transition: color var(--transition-fast);
+      text-align: left;
+      gap: 1rem;
+    }
+
+    .accordion-trigger:hover { color: var(--accent); }
+
+    .accordion-icon {
+      font-size: 0.75rem;
+      color: var(--accent);
+      transition: transform var(--transition-med);
+      flex-shrink: 0;
+    }
+
+    .accordion-item.open .accordion-icon { transform: rotate(180deg); }
+
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .accordion-body-inner {
+      padding: 0 1.5rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Services filter tabs */
+    .filter-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+
+    .filter-tab {
+      padding: 0.55rem 1.25rem;
+      border-radius: 20px;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 700;
+      border: 2px solid var(--border);
+      color: var(--text-secondary);
+      background: transparent;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .filter-tab:hover,
+    .filter-tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #0f0e0d;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════ -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="APEX GYM Home">
+        <div class="nav-logo-icon" aria-hidden="true">A</div>
+        APEX<span>GYM</span>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark/light mode" id="theme-toggle-btn">
+          <span class="theme-toggle-icon icon-sun" aria-hidden="true">☀️</span>
+          <span class="theme-toggle-thumb" aria-hidden="true"></span>
+          <span class="theme-toggle-icon icon-moon" aria-hidden="true">🌙</span>
+        </button>
+        <a href="contact.html" class="btn btn-primary nav-cta" id="nav-join-btn">
+          Join Now <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        <button class="nav-hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu" id="hamburger-btn">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <ul class="mobile-menu-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;" id="mobile-join-btn">
+      Join Now <i class="fa fa-arrow-right" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <main>
+
+    <!-- ══════════════════════════════════
+         PAGE HERO
+    ══════════════════════════════════ -->
+    <section class="page-hero" aria-labelledby="services-hero-heading">
+      <div class="container" style="position:relative;z-index:1;">
+        <span class="section-label fade-in">Programs &amp; Services</span>
+        <h1 class="section-title fade-in" id="services-hero-heading" style="margin-top:0.5rem;font-size:clamp(2.5rem,5vw,4rem);">
+          Train Smarter. <span class="text-accent">Achieve More.</span>
+        </h1>
+        <p class="section-subtitle fade-in" style="margin-inline:auto;text-align:center;">
+          Every program at APEX is engineered for real results. Choose your
+          path — we'll provide the expertise to get you there.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         PROGRAMS GRID
+    ══════════════════════════════════ -->
+    <section class="section" aria-labelledby="programs-heading">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">What We Offer</span>
+          <h2 class="section-title" id="programs-heading">
+            Our <span class="text-accent">Premium Programs</span>
+          </h2>
+          <p class="section-subtitle">
+            Whether you're a beginner or a seasoned athlete, we have a program
+            calibrated to your level and goals.
+          </p>
+        </div>
+
+        <div class="services-grid stagger-children">
+          <!-- Strength Training -->
+          <article class="service-card slide-up" id="service-strength">
+            <div class="service-icon-wrap" aria-hidden="true">🏋️</div>
+            <h3>Strength &amp; Powerlifting</h3>
+            <p>Our signature strength program combines progressive overload principles with biomechanical coaching for maximum muscle and power development.</p>
+            <div class="service-features" role="list">
+              <div class="service-feature-item" role="listitem">1-on-1 form analysis</div>
+              <div class="service-feature-item" role="listitem">Periodized programming</div>
+              <div class="service-feature-item" role="listitem">Max strength tracking</div>
+              <div class="service-feature-item" role="listitem">Competition prep available</div>
+            </div>
+          </article>
+
+          <!-- HIIT -->
+          <article class="service-card slide-up" id="service-hiit">
+            <div class="service-icon-wrap" aria-hidden="true">⚡</div>
+            <h3>HIIT &amp; Metabolic Cardio</h3>
+            <p>High-intensity interval training designed to torch fat, spike your metabolism, and improve cardiovascular fitness in record time.</p>
+            <div class="service-features" role="list">
+              <div class="service-feature-item" role="listitem">30–45 min explosive sessions</div>
+              <div class="service-feature-item" role="listitem">Heart rate monitoring</div>
+              <div class="service-feature-item" role="listitem">Daily class schedule</div>
+              <div class="service-feature-item" role="listitem">All fitness levels welcome</div>
+            </div>
+          </article>
+
+          <!-- Personal Training -->
+          <article class="service-card slide-up" id="service-pt">
+            <div class="service-icon-wrap" aria-hidden="true">🎯</div>
+            <h3>Personal Training</h3>
+            <p>One-on-one sessions with a dedicated APEX coach, tailored entirely to your specific goals, schedule, and physical condition.</p>
+            <div class="service-features" role="list">
+              <div class="service-feature-item" role="listitem">Full body composition scan</div>
+              <div class="service-feature-item" role="listitem">Customized 12-week program</div>
+              <div class="service-feature-item" role="listitem">Weekly progress reviews</div>
+              <div class="service-feature-item" role="listitem">24/7 coach messaging</div>
+            </div>
+          </article>
+
+          <!-- Group Classes -->
+          <article class="service-card slide-up" id="service-group">
+            <div class="service-icon-wrap" aria-hidden="true">👥</div>
+            <h3>Group Classes</h3>
+            <p>High-energy, coach-led group sessions spanning yoga, spin, boxing, functional fitness, and more. Community-driven motivation at its finest.</p>
+            <div class="service-features" role="list">
+              <div class="service-feature-item" role="listitem">20+ class types weekly</div>
+              <div class="service-feature-item" role="listitem">Max 15 per session</div>
+              <div class="service-feature-item" role="listitem">App-based booking</div>
+              <div class="service-feature-item" role="listitem">Beginner-friendly options</div>
+            </div>
+          </article>
+
+          <!-- Nutrition -->
+          <article class="service-card slide-up" id="service-nutrition">
+            <div class="service-icon-wrap" aria-hidden="true">🥗</div>
+            <h3>Nutrition Coaching</h3>
+            <p>Evidence-based nutrition guidance from registered dietitians. From macros to meal prep, we make fueling your body effortless.</p>
+            <div class="service-features" role="list">
+              <div class="service-feature-item" role="listitem">Personalized meal plans</div>
+              <div class="service-feature-item" role="listitem">Metabolic rate testing</div>
+              <div class="service-feature-item" role="listitem">Supplement guidance</div>
+              <div class="service-feature-item" role="listitem">Monthly re-assessment</div>
+            </div>
+          </article>
+
+          <!-- Recovery -->
+          <article class="service-card slide-up" id="service-recovery">
+            <div class="service-icon-wrap" aria-hidden="true">💆</div>
+            <h3>Recovery &amp; Wellness</h3>
+            <p>Train hard, recover harder. Our dedicated recovery zone features ice baths, infrared saunas, massage chairs, and mobility coaching.</p>
+            <div class="service-features" role="list">
+              <div class="service-feature-item" role="listitem">Cold plunge &amp; ice baths</div>
+              <div class="service-feature-item" role="listitem">Infrared sauna suites</div>
+              <div class="service-feature-item" role="listitem">Sports massage therapy</div>
+              <div class="service-feature-item" role="listitem">Stretching &amp; mobility labs</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         PRICING
+    ══════════════════════════════════ -->
+    <section class="section" style="background: var(--bg-secondary);" aria-labelledby="pricing-heading">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">Membership Plans</span>
+          <h2 class="section-title" id="pricing-heading">
+            Simple, <span class="text-accent">Transparent</span> Pricing
+          </h2>
+          <p class="section-subtitle">
+            No hidden fees, no long-term lock-ins. Choose the plan that matches
+            your ambition and upgrade anytime.
+          </p>
+        </div>
+
+        <div class="pricing-grid stagger-children">
+          <!-- Starter -->
+          <div class="pricing-card slide-up" id="pricing-starter">
+            <div class="pricing-name">Starter</div>
+            <div class="pricing-price">
+              <span class="pricing-currency">$</span>
+              <span class="pricing-amount">39</span>
+            </div>
+            <div class="pricing-period">per month</div>
+            <ul class="pricing-features" role="list">
+              <li class="pricing-feature" role="listitem">
+                <span class="pricing-feature-check" aria-hidden="true">✓</span>
+                Gym floor access (6am–10pm)
+              </li>
+              <li class="pricing-feature" role="listitem">
+                <span class="pricing-feature-check" aria-hidden="true">✓</span>
+                2 group classes / week
+              </li>
+              <li class="pricing-feature" role="listitem">
+                <span class="pricing-feature-check" aria-hidden="true">✓</span>
+                Locker room &amp; showers
+              </li>
+              <li class="pricing-feature" role="listitem">
+                <span class="pricing-feature-check" aria-hidden="true">✓</span>
+                APEX mobile app access
+              </li>
+            </ul>
+            <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center;" id="pricing-starter-btn">
+              Get Started
+            </a>
+          </div>
+
+          <!-- Pro (Featured) -->
+          <div class="pricing-card featured slide-up" id="pricing-pro">
+            <div class="pricing-badge">Most Popular</div>
+            <div class="pricing-name">Pro</div>
+            <div class="pricing-price">
+              <span class="pricing-currency">$</span>
+              <span class="pricing-amount">79</span>
+            </div>
+            <div class="pricing-period">per month</div>
+            <ul class="pricing-features" role="list">
+              <li class="pricing-feature" role="listitem">
+                <span class="pricing-feature-check" aria-hidden="true">✓</span>
+                24/7 keycard access
+              </li>
+              <li class="pricing-feature" role="listitem">
+                <span class="pricing-feature-check" aria-hidden="true">✓</span>
+                Unlimited group classes
+              </li>
+              <li class="pricing-feature" role="listitem">
+                <span class="pricing-feature-check" aria-hidden="true">✓</span>
+                2 PT sessions / month
+              </li>
+              <li class="pricing-feature" role="listitem">
+                <span class="pricing-feature-check" aria-hidden="true">✓</span>
+                Recovery zone access
+              </li>
+              <li class="pricing-feature" role="listitem">
+                <span class="pricing-feature-check" aria-hidden="true">✓</span>
+                Nutrition consultation
+              </li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;" id="pricing-pro-btn">
+              Choose Pro
+            </a>
+          </div>
+
+          <!-- Elite -->
+          <div class="pricing-card slide-up" id="pricing-elite">
+            <div class="pricing-name">Elite</div>
+            <div class="pricing-price">
+              <span class="pricing-currency">$</span>
+              <span class="pricing-amount">149</span>
+            </div>
+            <div class="pricing-period">per month</div>
+            <ul class="pricing-features" role="list">
+              <li class="pricing-feature" role="listitem">
+                <span class="pricing-feature-check" aria-hidden="true">✓</span>
+                Everything in Pro
+              </li>
+              <li class="pricing-feature" role="listitem">
+                <span class="pricing-feature-check" aria-hidden="true">✓</span>
+                Unlimited PT sessions
+              </li>
+              <li class="pricing-feature" role="listitem">
+                <span class="pricing-feature-check" aria-hidden="true">✓</span>
+                Full nutrition plan
+              </li>
+              <li class="pricing-feature" role="listitem">
+                <span class="pricing-feature-check" aria-hidden="true">✓</span>
+                Priority class booking
+              </li>
+              <li class="pricing-feature" role="listitem">
+                <span class="pricing-feature-check" aria-hidden="true">✓</span>
+                Monthly body composition
+              </li>
+              <li class="pricing-feature" role="listitem">
+                <span class="pricing-feature-check" aria-hidden="true">✓</span>
+                Guest pass (2/month)
+              </li>
+            </ul>
+            <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center;" id="pricing-elite-btn">
+              Go Elite
+            </a>
+          </div>
+        </div>
+
+        <p class="fade-in" style="text-align:center;margin-top:2rem;font-size:0.85rem;color:var(--text-muted);">
+          <i class="fa fa-lock" aria-hidden="true"></i>&nbsp;
+          All plans include a 7-day free trial. Cancel anytime, no questions asked.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         FAQ ACCORDION
+    ══════════════════════════════════ -->
+    <section class="section" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">FAQ</span>
+          <h2 class="section-title" id="faq-heading">
+            Got <span class="text-accent">Questions?</span>
+          </h2>
+        </div>
+
+        <div style="max-width:720px;margin-inline:auto;" class="fade-in">
+          <div class="accordion-item" id="faq-1">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-1-body">
+              Can I try APEX before committing to a plan?
+              <i class="fa fa-chevron-down accordion-icon" aria-hidden="true"></i>
+            </button>
+            <div class="accordion-body" id="faq-1-body" role="region">
+              <div class="accordion-body-inner">
+                Absolutely! Every new member gets a complimentary 7-day free trial with full access to all facilities and a welcome session with one of our coaches. No credit card required upfront.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" id="faq-2">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-2-body">
+              Do I need experience to join?
+              <i class="fa fa-chevron-down accordion-icon" aria-hidden="true"></i>
+            </button>
+            <div class="accordion-body" id="faq-2-body" role="region">
+              <div class="accordion-body-inner">
+                Not at all. APEX welcomes members of every fitness level, from first-timers to competitive athletes. Your onboarding session will assess your current level and build a plan from there.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" id="faq-3">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-3-body">
+              What are the gym's operating hours?
+              <i class="fa fa-chevron-down accordion-icon" aria-hidden="true"></i>
+            </button>
+            <div class="accordion-body" id="faq-3-body" role="region">
+              <div class="accordion-body-inner">
+                Staffed hours are Monday–Friday 5am–11pm, Saturday 6am–10pm, and Sunday 7am–9pm. Pro and Elite members enjoy 24/7 keycard access so you can train whenever it suits you best.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" id="faq-4">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-4-body">
+              Can I pause or cancel my membership?
+              <i class="fa fa-chevron-down accordion-icon" aria-hidden="true"></i>
+            </button>
+            <div class="accordion-body" id="faq-4-body" role="region">
+              <div class="accordion-body-inner">
+                Yes. Memberships can be paused for up to 60 days per year (e.g., travel or medical reasons) and cancelled at any time with 30 days notice. We believe in earning your loyalty, not locking you in.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item" id="faq-5">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-5-body">
+              Are group classes included in all memberships?
+              <i class="fa fa-chevron-down accordion-icon" aria-hidden="true"></i>
+            </button>
+            <div class="accordion-body" id="faq-5-body" role="region">
+              <div class="accordion-body-inner">
+                The Starter plan includes 2 group classes per week. Pro and Elite plans include unlimited group class access with priority booking through the APEX mobile app.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" aria-labelledby="services-cta-heading">
+      <div class="container">
+        <div class="cta-inner fade-in">
+          <h2 id="services-cta-heading">Your Best Self Is Waiting</h2>
+          <p>Start your 7-day free trial today and experience the APEX difference.</p>
+          <a href="contact.html" class="btn btn-dark" id="services-cta-btn">
+            Start Free Trial <i class="fa fa-bolt" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="footer-logo-icon" aria-hidden="true">A</div>
+            APEX<span>GYM</span>
+          </div>
+          <p>Empowering people to unlock their physical and mental potential since 2009.</p>
+          <div class="footer-social" aria-label="Social media links">
+            <a href="#" aria-label="Instagram" id="footer-instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook" id="footer-facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="YouTube" id="footer-youtube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="TikTok" id="footer-tiktok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Navigation</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Programs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Programs</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="services.html">Strength Training</a></li>
+            <li><a href="services.html">HIIT Cardio</a></li>
+            <li><a href="services.html">Personal Training</a></li>
+            <li><a href="services.html">Group Classes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Hours</h3>
+          <ul class="footer-links" role="list" style="color:rgba(255,255,255,0.4);font-size:0.88rem;">
+            <li style="display:flex;justify-content:space-between;"><span>Mon – Fri</span><span style="color:var(--accent)">5am – 11pm</span></li>
+            <li style="display:flex;justify-content:space-between;margin-top:0.4rem;"><span>Saturday</span><span style="color:var(--accent)">6am – 10pm</span></li>
+            <li style="display:flex;justify-content:space-between;margin-top:0.4rem;"><span>Sunday</span><span style="color:var(--accent)">7am – 9pm</span></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="footer-divider" />
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2024 <span>APEX GYM</span>. All rights reserved.</p>
+        <div style="display:flex;gap:1.5rem;">
+          <a href="#" style="font-size:0.78rem;color:rgba(255,255,255,0.3);">Privacy Policy</a>
+          <a href="#" style="font-size:0.78rem;color:rgba(255,255,255,0.3);">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

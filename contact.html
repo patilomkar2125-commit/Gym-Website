@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — APEX GYM</title>
+  <meta name="description" content="Get in touch with APEX GYM to start your free trial, ask about memberships, or book a tour of our facility. We're here to help you start your journey." />
+  <link rel="canonical" href="contact.html" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
+  <style>
+    /* ── Contact-specific styles ── */
+    .contact-section {
+      background: var(--bg-primary);
+      padding: 5rem 0;
+    }
+
+    /* Map placeholder */
+    .map-container {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      height: 280px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-top: 1.5rem;
+    }
+
+    .map-placeholder {
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .map-placeholder .map-icon {
+      font-size: 3rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .map-placeholder p { font-size: 0.88rem; }
+
+    .map-placeholder a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    /* Hours table */
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hours-table td {
+      padding: 0.6rem 0;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+
+    .hours-table td:last-child {
+      text-align: right;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .hours-table .today td {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    /* Social links label */
+    .social-label {
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      margin-top: 1.5rem;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════ -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="APEX GYM Home">
+        <div class="nav-logo-icon" aria-hidden="true">A</div>
+        APEX<span>GYM</span>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark/light mode" id="theme-toggle-btn">
+          <span class="theme-toggle-icon icon-sun" aria-hidden="true">☀️</span>
+          <span class="theme-toggle-thumb" aria-hidden="true"></span>
+          <span class="theme-toggle-icon icon-moon" aria-hidden="true">🌙</span>
+        </button>
+        <a href="contact.html" class="btn btn-primary nav-cta" id="nav-join-btn">
+          Join Now <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        <button class="nav-hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu" id="hamburger-btn">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <ul class="mobile-menu-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;" id="mobile-join-btn">
+      Join Now <i class="fa fa-arrow-right" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <main>
+
+    <!-- ══════════════════════════════════
+         PAGE HERO
+    ══════════════════════════════════ -->
+    <section class="page-hero" aria-labelledby="contact-hero-heading">
+      <div class="container" style="position:relative;z-index:1;">
+        <span class="section-label fade-in">Get In Touch</span>
+        <h1 class="section-title fade-in" id="contact-hero-heading" style="margin-top:0.5rem;font-size:clamp(2.5rem,5vw,4rem);">
+          Let's Start Your <span class="text-accent">Journey</span>
+        </h1>
+        <p class="section-subtitle fade-in" style="margin-inline:auto;text-align:center;">
+          Whether you're ready to join, have a question, or just want to come look
+          around — we'd love to hear from you.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         CONTACT SECTION
+    ══════════════════════════════════ -->
+    <section class="contact-section" aria-labelledby="contact-form-heading">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- LEFT: Contact Info -->
+          <div class="slide-left">
+            <h2 class="section-title" id="contact-info-heading" style="font-size:1.6rem;margin-bottom:1.5rem;">
+              Contact <span class="text-accent">Information</span>
+            </h2>
+
+            <div class="contact-info-cards">
+              <div class="contact-info-card" id="contact-address">
+                <div class="contact-info-icon" aria-hidden="true">📍</div>
+                <div>
+                  <div class="contact-info-label">Address</div>
+                  <div class="contact-info-value">BML Munjal University, Gurga<br/>Gurgaon, Haryana</div>
+                </div>
+              </div>
+
+              <div class="contact-info-card" id="contact-phone">
+                <div class="contact-info-icon" aria-hidden="true">📞</div>
+                <div>
+                  <div class="contact-info-label">Phone</div>
+                  <div class="contact-info-value">
+                    <a href="tel:+918788141738" style="color:inherit;">+91 8788141738</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-info-card" id="contact-email">
+                <div class="contact-info-icon" aria-hidden="true">✉️</div>
+                <div>
+                  <div class="contact-info-label">Email</div>
+                  <div class="contact-info-value">
+                    <a href="mailto:hello@apexgym.com" style="color:inherit;">hello@apexgym.com</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Gym Hours -->
+            <h3 style="font-size:1rem;font-weight:700;margin-top:2rem;margin-bottom:0.5rem;">
+              Gym Hours
+            </h3>
+            <table class="hours-table" aria-label="Gym operating hours">
+              <tbody>
+                <tr>
+                  <td>Monday – Friday</td>
+                  <td>5:00am – 11:00pm</td>
+                </tr>
+                <tr>
+                  <td>Saturday</td>
+                  <td>6:00am – 10:00pm</td>
+                </tr>
+                <tr>
+                  <td>Sunday</td>
+                  <td>7:00am – 9:00pm</td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="font-size:0.8rem;color:var(--text-muted);padding-top:0.75rem;">
+                    🔑 Pro &amp; Elite members: <span style="color:var(--accent);">24/7 Keycard Access</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- Social Links -->
+            <span class="social-label">Follow Us</span>
+            <div class="social-links" role="list" aria-label="Social media">
+              <a href="#" class="social-link" role="listitem" aria-label="Instagram" id="contact-instagram">
+                <i class="fab fa-instagram" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="social-link" role="listitem" aria-label="Facebook" id="contact-facebook">
+                <i class="fab fa-facebook-f" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="social-link" role="listitem" aria-label="YouTube" id="contact-youtube">
+                <i class="fab fa-youtube" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="social-link" role="listitem" aria-label="TikTok" id="contact-tiktok">
+                <i class="fab fa-tiktok" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="social-link" role="listitem" aria-label="Twitter/X" id="contact-twitter">
+                <i class="fab fa-x-twitter" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <!-- Map Placeholder -->
+            <div class="map-container" aria-label="Gym location map">
+              <div class="map-placeholder">
+                <span class="map-icon" aria-hidden="true">🗺️</span>
+                <p>BML Munjal University, Gurga</p>
+                <p><a href="https://maps.app.goo.gl/ZSB8sNqF7UB3zBbF9?g_st=aw" target="_blank" rel="noopener noreferrer">Open in Google Maps →</a></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Contact Form -->
+          <div class="slide-right">
+            <div class="contact-form-card">
+              <h2 id="contact-form-heading" style="font-size:1.4rem;margin-bottom:0.5rem;">
+                Send Us a <span class="text-accent">Message</span>
+              </h2>
+              <p style="color:var(--text-secondary);font-size:0.88rem;margin-bottom:2rem;line-height:1.6;">
+                Fill in the form below and we'll get back to you within 24 hours.
+                Or feel free to call or email us directly.
+              </p>
+
+              <!-- Contact Form -->
+              <form id="contact-form" novalidate aria-label="Contact form">
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="contact-firstname">First Name *</label>
+                    <input
+                      type="text"
+                      id="contact-firstname"
+                      name="firstname"
+                      class="form-input"
+                      placeholder="Jordan"
+                      required
+                      autocomplete="given-name"
+                      aria-required="true"
+                    />
+                    <span class="form-error" role="alert" id="firstname-error"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="contact-lastname">Last Name *</label>
+                    <input
+                      type="text"
+                      id="contact-lastname"
+                      name="lastname"
+                      class="form-input"
+                      placeholder="Mercer"
+                      required
+                      autocomplete="family-name"
+                      aria-required="true"
+                    />
+                    <span class="form-error" role="alert" id="lastname-error"></span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="contact-email-input">Email Address *</label>
+                  <input
+                    type="email"
+                    id="contact-email-input"
+                    name="email"
+                    class="form-input"
+                    placeholder="jordan@example.com"
+                    required
+                    autocomplete="email"
+                    aria-required="true"
+                  />
+                  <span class="form-error" role="alert" id="email-error"></span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="contact-phone-input">Phone Number</label>
+                  <input
+                    type="tel"
+                    id="contact-phone-input"
+                    name="phone"
+                    class="form-input"
+                    placeholder="(555) 000-0000"
+                    autocomplete="tel"
+                  />
+                  <span class="form-error" role="alert" id="phone-error"></span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="contact-interest">I'm Interested In</label>
+                  <select
+                    id="contact-interest"
+                    name="interest"
+                    class="form-select"
+                    aria-label="Area of interest"
+                  >
+                    <option value="">Select a program...</option>
+                    <option value="trial">7-Day Free Trial</option>
+                    <option value="membership">Membership Plans</option>
+                    <option value="pt">Personal Training</option>
+                    <option value="group">Group Classes</option>
+                    <option value="nutrition">Nutrition Coaching</option>
+                    <option value="corporate">Corporate Membership</option>
+                    <option value="other">Something Else</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="contact-message">Your Message *</label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    class="form-textarea"
+                    placeholder="Tell us about your fitness goals or ask us anything..."
+                    required
+                    aria-required="true"
+                    rows="5"
+                  ></textarea>
+                  <span class="form-error" role="alert" id="message-error"></span>
+                </div>
+
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  style="width:100%;justify-content:center;font-size:1rem;padding:1rem;"
+                  id="contact-submit-btn"
+                  aria-label="Send message"
+                >
+                  Send Message <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                </button>
+
+              </form>
+
+              <!-- Success State -->
+              <div class="form-success" id="form-success" role="alert" aria-live="polite">
+                <div class="form-success-icon" aria-hidden="true">🎉</div>
+                <h3>Message Sent!</h3>
+                <p>
+                  Thanks for reaching out! One of our team members will be in
+                  touch within 24 hours. We can't wait to help you start your journey.
+                </p>
+                <a href="services.html" class="btn btn-outline" style="margin-top:1.5rem;" id="success-explore-btn">
+                  Explore Programs <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+
+            </div><!-- /contact-form-card -->
+          </div><!-- /slide-right -->
+
+        </div><!-- /contact-grid -->
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         QUICK BENEFITS BAR
+    ══════════════════════════════════ -->
+    <section style="background:var(--bg-secondary);padding:3rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);" aria-label="Key benefits">
+      <div class="container">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;text-align:center;" class="stagger-children">
+          <div class="fade-in" id="benefit-trial">
+            <div style="font-size:2rem;margin-bottom:0.5rem;" aria-hidden="true">🆓</div>
+            <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.25rem;">Free 7-Day Trial</h3>
+            <p style="font-size:0.82rem;color:var(--text-muted);">No card needed upfront</p>
+          </div>
+          <div class="fade-in" id="benefit-cancel">
+            <div style="font-size:2rem;margin-bottom:0.5rem;" aria-hidden="true">🔓</div>
+            <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.25rem;">Cancel Anytime</h3>
+            <p style="font-size:0.82rem;color:var(--text-muted);">No long-term lock-ins</p>
+          </div>
+          <div class="fade-in" id="benefit-coaches">
+            <div style="font-size:2rem;margin-bottom:0.5rem;" aria-hidden="true">🏅</div>
+            <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.25rem;">Certified Coaches</h3>
+            <p style="font-size:0.82rem;color:var(--text-muted);">NSCA &amp; ACE certified staff</p>
+          </div>
+          <div class="fade-in" id="benefit-response">
+            <div style="font-size:2rem;margin-bottom:0.5rem;" aria-hidden="true">⚡</div>
+            <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.25rem;">Fast Response</h3>
+            <p style="font-size:0.82rem;color:var(--text-muted);">Reply within 24 hours</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="footer-logo-icon" aria-hidden="true">A</div>
+            APEX<span>GYM</span>
+          </div>
+          <p>Empowering people to unlock their physical and mental potential since 2009.</p>
+          <div class="footer-social" aria-label="Social media links">
+            <a href="#" aria-label="Instagram" id="footer-instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook" id="footer-facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="YouTube" id="footer-youtube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="TikTok" id="footer-tiktok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Navigation</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Programs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Programs</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="services.html">Strength Training</a></li>
+            <li><a href="services.html">HIIT Cardio</a></li>
+            <li><a href="services.html">Personal Training</a></li>
+            <li><a href="services.html">Group Classes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Hours</h3>
+          <ul class="footer-links" role="list" style="color:rgba(255,255,255,0.4);font-size:0.88rem;">
+            <li style="display:flex;justify-content:space-between;"><span>Mon – Fri</span><span style="color:var(--accent)">5am – 11pm</span></li>
+            <li style="display:flex;justify-content:space-between;margin-top:0.4rem;"><span>Saturday</span><span style="color:var(--accent)">6am – 10pm</span></li>
+            <li style="display:flex;justify-content:space-between;margin-top:0.4rem;"><span>Sunday</span><span style="color:var(--accent)">7am – 9pm</span></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="footer-divider" />
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2024 <span>APEX GYM</span>. All rights reserved.</p>
+        <div style="display:flex;gap:1.5rem;">
+          <a href="#" style="font-size:0.78rem;color:rgba(255,255,255,0.3);">Privacy Policy</a>
+          <a href="#" style="font-size:0.78rem;color:rgba(255,255,255,0.3);">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

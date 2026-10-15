@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — APEX GYM</title>
+  <meta name="description" content="Learn about APEX GYM's mission, history, and the elite team of coaches and trainers dedicated to your fitness transformation." />
+  <link rel="canonical" href="about.html" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
+  <style>
+    /* ── About-page specific styles ── */
+    .mission-section { background: var(--bg-secondary); }
+
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .mission-text h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .mission-text p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .mission-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .mission-highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-sm);
+      transition: border-color var(--transition-fast);
+    }
+
+    .mission-highlight-item:hover {
+      border-color: rgba(245,158,11,0.3);
+    }
+
+    .mission-highlight-icon {
+      color: var(--accent);
+      font-size: 1rem;
+      margin-top: 0.1rem;
+      flex-shrink: 0;
+    }
+
+    .mission-highlight-item h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .mission-highlight-item p {
+      font-size: 0.82rem;
+      margin-bottom: 0;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 0.4rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .timeline-year {
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-item h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-item p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .mission-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════ -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="APEX GYM Home">
+        <div class="nav-logo-icon" aria-hidden="true">A</div>
+        APEX<span>GYM</span>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark/light mode" id="theme-toggle-btn">
+          <span class="theme-toggle-icon icon-sun" aria-hidden="true">☀️</span>
+          <span class="theme-toggle-thumb" aria-hidden="true"></span>
+          <span class="theme-toggle-icon icon-moon" aria-hidden="true">🌙</span>
+        </button>
+        <a href="contact.html" class="btn btn-primary nav-cta" id="nav-join-btn">
+          Join Now <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        <button class="nav-hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu" id="hamburger-btn">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <ul class="mobile-menu-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center;" id="mobile-join-btn">
+      Join Now <i class="fa fa-arrow-right" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <main>
+
+    <!-- ══════════════════════════════════
+         PAGE HERO
+    ══════════════════════════════════ -->
+    <section class="page-hero" aria-labelledby="about-hero-heading">
+      <div class="container" style="position:relative;z-index:1;">
+        <span class="section-label fade-in">Our Story</span>
+        <h1 class="section-title fade-in" id="about-hero-heading" style="margin-top:0.5rem;font-size:clamp(2.5rem,5vw,4rem);">
+          Built for <span class="text-accent">Champions</span>
+        </h1>
+        <p class="section-subtitle fade-in" style="margin-inline:auto;text-align:center;">
+          APEX GYM was founded on one belief: every person carries the potential
+          for greatness. Our job is to help you find it.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         MISSION + IMAGE
+    ══════════════════════════════════ -->
+    <section class="section mission-section" aria-labelledby="mission-heading">
+      <div class="container">
+        <div class="mission-grid">
+          <!-- Image Side -->
+          <div class="about-hero-img slide-left">
+            <img src="images/about_team.png" alt="APEX GYM coaching team" loading="lazy" />
+            <div class="about-badge-floating" aria-label="15 Years of Excellence">
+              <div class="about-badge-number">15+</div>
+              <div class="about-badge-text">Years of<br/>Excellence</div>
+            </div>
+          </div>
+
+          <!-- Text Side -->
+          <div class="mission-text slide-right">
+            <span class="section-label">Our Mission</span>
+            <h2 id="mission-heading">We Don't Just Train Bodies.<br/>We <span class="text-accent">Build Champions.</span></h2>
+            <p>
+              Founded in 2009 by former Olympic athletes Jordan Mercer and Aisha
+              Cole, APEX GYM started as a single 3,000 sq ft space with a vision:
+              to bring elite-level training to everyday people without compromise.
+            </p>
+            <p>
+              Today, with over 5,000 active members and a team of 32 certified
+              professionals, APEX stands as the region's most trusted performance
+              fitness facility — and we're just getting started.
+            </p>
+
+            <div class="mission-highlights">
+              <div class="mission-highlight-item">
+                <i class="fa fa-trophy mission-highlight-icon" aria-hidden="true"></i>
+                <div>
+                  <h4>Proven Results</h4>
+                  <p>98% member satisfaction with measurable, documented transformations.</p>
+                </div>
+              </div>
+              <div class="mission-highlight-item">
+                <i class="fa fa-heart mission-highlight-icon" aria-hidden="true"></i>
+                <div>
+                  <h4>Holistic Approach</h4>
+                  <p>Body, mind, and nutrition united under one roof with expert guidance.</p>
+                </div>
+              </div>
+              <div class="mission-highlight-item">
+                <i class="fa fa-shield-halved mission-highlight-icon" aria-hidden="true"></i>
+                <div>
+                  <h4>Safety First</h4>
+                  <p>All trainers are fully certified; equipment inspected and cleaned daily.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         CORE VALUES
+    ══════════════════════════════════ -->
+    <section class="section" aria-labelledby="values-heading">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">Core Values</span>
+          <h2 class="section-title" id="values-heading">What We Stand For</h2>
+          <p class="section-subtitle">
+            These aren't just words on a wall — they're the principles that shape
+            every training session, every interaction, every decision at APEX.
+          </p>
+        </div>
+
+        <div class="about-values-grid stagger-children">
+          <article class="value-card fade-in" id="value-excellence">
+            <div class="value-icon" aria-hidden="true">🏆</div>
+            <h3>Excellence</h3>
+            <p>We hold ourselves — and our members — to the highest standards. Good enough never is.</p>
+          </article>
+
+          <article class="value-card fade-in" id="value-integrity">
+            <div class="value-icon" aria-hidden="true">⚖️</div>
+            <h3>Integrity</h3>
+            <p>Honest coaching, transparent pricing, and advice that puts your health first — always.</p>
+          </article>
+
+          <article class="value-card fade-in" id="value-community">
+            <div class="value-icon" aria-hidden="true">🔗</div>
+            <h3>Community</h3>
+            <p>No one succeeds alone. APEX is a brotherhood and sisterhood of mutual support and motivation.</p>
+          </article>
+
+          <article class="value-card fade-in" id="value-innovation">
+            <div class="value-icon" aria-hidden="true">⚡</div>
+            <h3>Innovation</h3>
+            <p>We stay ahead of the science — continuously upgrading programs, equipment, and methodology.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         TIMELINE / HISTORY
+    ══════════════════════════════════ -->
+    <section class="section" style="background: var(--bg-secondary);" aria-labelledby="history-heading">
+      <div class="container">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;" class="history-grid-wrap">
+          <div class="slide-left">
+            <span class="section-label">Our Journey</span>
+            <h2 class="section-title" id="history-heading">
+              A Decade of <span class="text-accent">Impact</span>
+            </h2>
+            <p style="color:var(--text-secondary);line-height:1.8;font-size:0.95rem;margin-top:1rem;">
+              From a single training floor to a full-service performance hub,
+              every milestone reflects our obsession with building something
+              extraordinary for our community.
+            </p>
+          </div>
+
+          <div class="timeline slide-right">
+            <div class="timeline-item fade-in">
+              <div class="timeline-year">2009</div>
+              <h3>APEX Is Born</h3>
+              <p>Opened our first 3,000 sq ft location with 8 staff members and a bold vision.</p>
+            </div>
+            <div class="timeline-item fade-in">
+              <div class="timeline-year">2012</div>
+              <h3>Expansion &amp; Growth</h3>
+              <p>Moved to a 12,000 sq ft facility, tripling membership capacity and adding group classes.</p>
+            </div>
+            <div class="timeline-item fade-in">
+              <div class="timeline-year">2016</div>
+              <h3>Performance Hub Launch</h3>
+              <p>Introduced the Recovery Zone, sports nutrition bar, and biomechanical analysis studio.</p>
+            </div>
+            <div class="timeline-item fade-in">
+              <div class="timeline-year">2020</div>
+              <h3>Digital Integration</h3>
+              <p>Launched APEX App with virtual coaching, workout tracking, and live-streamed classes.</p>
+            </div>
+            <div class="timeline-item fade-in">
+              <div class="timeline-year">2024</div>
+              <h3>5,000 Members Strong</h3>
+              <p>Reached a landmark milestone with a fully renovated 20,000 sq ft state-of-the-art facility.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         TEAM
+    ══════════════════════════════════ -->
+    <section class="section" aria-labelledby="team-heading">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">The Team</span>
+          <h2 class="section-title" id="team-heading">
+            Meet Your <span class="text-accent">Coaches</span>
+          </h2>
+          <p class="section-subtitle">
+            Our elite team brings diverse expertise united by a single goal:
+            delivering your best possible results.
+          </p>
+        </div>
+
+        <div class="team-grid stagger-children">
+          <article class="team-card slide-up" id="team-jordan">
+            <div class="team-card-img" aria-hidden="true">💪</div>
+            <div class="team-card-body">
+              <h3 class="team-card-name">Jordan Mercer</h3>
+              <div class="team-card-role">Co-Founder &amp; Head Strength Coach</div>
+              <p class="team-card-bio">Former Olympic weightlifter with 20+ years in elite performance coaching. Specializes in powerlifting and athletic conditioning.</p>
+            </div>
+          </article>
+
+          <article class="team-card slide-up" id="team-aisha">
+            <div class="team-card-img" aria-hidden="true">🏃</div>
+            <div class="team-card-body">
+              <h3 class="team-card-name">Aisha Cole</h3>
+              <div class="team-card-role">Co-Founder &amp; Wellness Director</div>
+              <p class="team-card-bio">Sports nutritionist and mindfulness expert. Creates the holistic wellness programs that set APEX apart from every other gym.</p>
+            </div>
+          </article>
+
+          <article class="team-card slide-up" id="team-ryan">
+            <div class="team-card-img" aria-hidden="true">🔥</div>
+            <div class="team-card-body">
+              <h3 class="team-card-name">Ryan Okafor</h3>
+              <div class="team-card-role">HIIT &amp; Cardio Specialist</div>
+              <p class="team-card-bio">Former professional sprinter. Ryan's high-intensity programs are legendary for rapid fat loss and cardiovascular transformation.</p>
+            </div>
+          </article>
+
+          <article class="team-card slide-up" id="team-maya">
+            <div class="team-card-img" aria-hidden="true">🧘</div>
+            <div class="team-card-body">
+              <h3 class="team-card-name">Maya Patel</h3>
+              <div class="team-card-role">Yoga &amp; Mobility Coach</div>
+              <p class="team-card-bio">Certified yoga teacher and physiotherapist. Maya bridges the gap between performance training and injury prevention.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" aria-labelledby="about-cta-heading">
+      <div class="container">
+        <div class="cta-inner fade-in">
+          <h2 id="about-cta-heading">Ready to Train with the Best?</h2>
+          <p>Join APEX and discover what elite coaching can do for your body, mind, and confidence.</p>
+          <a href="contact.html" class="btn btn-dark" id="about-cta-btn">
+            Get Started Today <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="footer-logo-icon" aria-hidden="true">A</div>
+            APEX<span>GYM</span>
+          </div>
+          <p>Empowering people to unlock their physical and mental potential since 2009. Your journey to greatness starts here.</p>
+          <div class="footer-social" aria-label="Social media links">
+            <a href="#" aria-label="Instagram" id="footer-instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook" id="footer-facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="YouTube" id="footer-youtube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="TikTok" id="footer-tiktok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Navigation</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Programs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Programs</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="services.html">Strength Training</a></li>
+            <li><a href="services.html">HIIT Cardio</a></li>
+            <li><a href="services.html">Personal Training</a></li>
+            <li><a href="services.html">Group Classes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-col-title">Hours</h3>
+          <ul class="footer-links" role="list" style="color:rgba(255,255,255,0.4);font-size:0.88rem;">
+            <li style="display:flex;justify-content:space-between;"><span>Mon – Fri</span><span style="color:var(--accent)">5am – 11pm</span></li>
+            <li style="display:flex;justify-content:space-between;margin-top:0.4rem;"><span>Saturday</span><span style="color:var(--accent)">6am – 10pm</span></li>
+            <li style="display:flex;justify-content:space-between;margin-top:0.4rem;"><span>Sunday</span><span style="color:var(--accent)">7am – 9pm</span></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="footer-divider" />
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2024 <span>APEX GYM</span>. All rights reserved.</p>
+        <div style="display:flex;gap:1.5rem;">
+          <a href="#" style="font-size:0.78rem;color:rgba(255,255,255,0.3);">Privacy Policy</a>
+          <a href="#" style="font-size:0.78rem;color:rgba(255,255,255,0.3);">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    @media (max-width: 768px) {
+      .history-grid-wrap { grid-template-columns: 1fr !important; }
+    }
+  </style>
+
+  <script src="script.js"></script>
+</body>
+</html>
